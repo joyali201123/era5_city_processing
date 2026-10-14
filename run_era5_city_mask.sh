@@ -12,10 +12,11 @@
 #   mkdir -p slurm_logs
 #   sbatch run_era5_city_mask.sh
 # IMPORTANT: Slurm opens its logs before this script runs; mkdir above is required.
+cd /home/zhub/repo/era5_city_processing
 # Fill Linux paths below. Windows drive letters cannot be used on Linux.
 ARCHIVE_PATH=""   # REQUIRED fresh run: server absolute path to temp.tar.gz
 GPKG_PATH=""      # REQUIRED: server absolute path to regional UCDB .gpkg
-OUTPUT_PATH=""    # REQUIRED: Linux mapping of P:\oscar_team\users\biqing\era5_analysis_city_mask
+OUTPUT_PATH="/pdrive/projects/oscar_team/users/biqing/data/ERA5/era5_analysis_city_mask"    # REQUIRED: Linux mapping of P:\oscar_team\users\biqing\era5_analysis_city_mask
 EMAIL_TO="lizhuoran6@connect.hku.hk"       
 # Process every NetCDF member in the archive (all available years).
 FIRST_MEMBER_ONLY=0

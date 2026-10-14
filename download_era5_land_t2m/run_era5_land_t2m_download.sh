@@ -6,8 +6,8 @@
 #SBATCH --mem=16G
 #SBATCH --time=120:00:00
 #SBATCH --signal=B:TERM@120
-#SBATCH --output=./slurm_logs/slurm_%x_%j.out
-#SBATCH --error=./slurm_logs/slurm_%x_%j.err
+#SBATCH --output=/home/zhub/repo/era5_city_processing/slurm_logs/download_%x_%j.out
+#SBATCH --error=/home/zhub/repo/era5_city_processing/slurm_logs/download_%x_%j.err
 
 # Submit from the Linux directory containing this SH and the Python downloader:
 #   mkdir -p slurm_logs
@@ -22,11 +22,11 @@
 set -Eeuo pipefail
 
 # --------------------------- USER SETTINGS ---------------------------
-PYTHON_SCRIPT=""       # REQUIRED, e.g. /path/download_era5_land_t2m_global_1050_2026.py
-VENV_ACTIVATE=""       # REQUIRED, e.g. /path/precip_env/bin/activate
-OUTPUT_PATH=""         # REQUIRED Linux path for annual files and .parts
-TRACKER_PATH=""        # REQUIRED Linux path to the xlsx tracker
-EMAIL_TO="lizhuoran6@connect.hku.hk"
+PYTHON_SCRIPT="/home/zhub/repo/era5_city_processing/download_era5_land_t2m/download_era5_land_t2m_global_1050_2026.py"       # REQUIRED, e.g. /path/download_era5_land_t2m_global_1050_2026.py
+VENV_ACTIVATE="/home/zhub/venv/venv_era5/bin/activate"       # REQUIRED, e.g. /path/precip_env/bin/activate
+OUTPUT_PATH="/pdrive/projects/oscar_team/users/biqing/data/ERA5/era5_analysis_city_mask"         # REQUIRED Linux path for annual files and .parts
+TRACKER_PATH="/home/zhub/repo/era5_city_processing/download_era5_land_t2m/era5_land_download_tracker.xlsx"        # REQUIRED Linux path to the xlsx tracker
+EMAIL_TO="zhub@iiasa.ac.at"
 
 START_YEAR=1950
 END_YEAR=2026
@@ -50,7 +50,7 @@ EMAIL_LOG_TAIL_LINES=600
 
 cd "${SLURM_SUBMIT_DIR:-$PWD}"
 JOB_TAG="${SLURM_JOB_NAME:-era5land_t2m}_${SLURM_JOB_ID:-manual_$$}"
-LOG_DIR="$PWD/slurm_logs"
+LOG_DIR="/home/zhub/repo/era5_city_processing/slurm_logs"
 RUN_LOG="$LOG_DIR/run_${JOB_TAG}.log"
 ALERT_LOG="$LOG_DIR/alerts_${JOB_TAG}.log"
 MAIL_LOG="$LOG_DIR/mail_${JOB_TAG}.log"

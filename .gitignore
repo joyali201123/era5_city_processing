@@ -1,0 +1,18 @@
+# Python virtual environments
+venv/
+.venv/
+env/
+__pycache__/
+*.pyc
+
+# Slurm log outputs (keeps your repo clean of job logs)
+logs/
+slurm_logs/
+*.out
+*.err
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Data files (always keep raw data out of GitHub)
+*.nc
